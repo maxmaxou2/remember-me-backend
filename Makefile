@@ -8,17 +8,17 @@ install:
 
 .PHONY: format
 format:
-	uv run ruff check --fix app tests/
-	uv run ruff format app tests/
+	uv run ruff check --fix remember_me_backend tests/
+	uv run ruff format remember_me_backend tests/
 
 .PHONY: lint
 lint:
-	uv run ruff check app tests/
-	uv run ruff format --check app tests/
+	uv run ruff check remember_me_backend tests/
+	uv run ruff format --check remember_me_backend tests/
 
 .PHONY: mypy
 mypy:
-	uv run mypy app
+	uv run mypy remember_me_backend
 
 .PHONY: test
 test:
