@@ -28,13 +28,13 @@ router = APIRouter()
 
 
 @router.post("/", response_model=ChatSession)
-async def create_session(
+async def create_chat_session(
     user: CurrentUserDep,
     session: AsyncSessionDep,
     title: str | None = None,
     description: str | None = None,
 ):
-    chat_session = await chat_session_service.create_session(
+    chat_session = await chat_session_service.create_chat_session(
         session=session,
         title=title,
         description=description,
@@ -44,11 +44,11 @@ async def create_session(
 
 
 @router.get("/{session_uuid}", response_model=ChatSession)
-async def get_session(
-    session_id: int,
+async def get_chat_session(
+    chat_session_id: int,
     user: CurrentUserDep,
     session: AsyncSessionDep,
 ):
-    return await chat_session_service.get_session(
-        session=session, session_id=session_id, user=user
+    return await chat_session_service.get_chat_session(
+        session=session, chat_session_id=chat_session_id, user=user
     )

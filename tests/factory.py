@@ -1,26 +1,26 @@
 from typing import Any
 
 import sqlalchemy as sa
-
-# Assuming you have a faker instance from mixer
 from faker import Faker
 from mixer import mix_types as t
 from mixer.backend.sqlalchemy import SKIP_VALUE
 from mixer.backend.sqlalchemy import GenFactory as BaseGenFactory
 from mixer.backend.sqlalchemy import Mixer as BaseMixer
 from mixer.backend.sqlalchemy import TypeMixer as BaseTypeMixer
+
 from remember_me_backend.models import ChatSession, User
 
 faker = Faker()
 
 
 class GenFactory(BaseGenFactory):  # Extend if needed
-    types = BaseGenFactory.types | {
-        sa.String: t.STRING,
-        sa.Text: t.TEXT,
-        sa.Boolean: t.BOOL,
-        sa.Integer: t.INT,
-    }
+    types = BaseGenFactory.types
+    # | {
+    #     sa.String: t.STRING,
+    #     sa.Text: t.TEXT,
+    #     sa.Boolean: t.BOOL,
+    #     sa.Integer: t.INT,
+    # }
 
 
 class TypeMixer(BaseTypeMixer):

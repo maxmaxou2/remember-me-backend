@@ -1,8 +1,9 @@
-from remember_me_backend.models import AsyncSession, ChatSession, User
 import sqlalchemy as sa
 
+from remember_me_backend.models import AsyncSession, ChatSession, User
 
-async def create_session(
+
+async def create_chat_session(
     session: AsyncSession,
     user: User,
     title: str | None = None,
@@ -17,11 +18,11 @@ async def create_session(
     return chat_session
 
 
-async def get_session(
-    session: AsyncSession, session_id: int, user: User
+async def get_chat_session(
+    session: AsyncSession, user: User, chat_session_id: int
 ) -> ChatSession:
     query = sa.select(ChatSession).filter(
-        ChatSession.id == session_id, ChatSession.user == user
+        ChatSession.id == chat_session_id, ChatSession.user == user
     )
     result = await session.execute(query)
     return result.scalars().one()
