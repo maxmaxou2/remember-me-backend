@@ -10,7 +10,7 @@ class ChatSession(DBModel):
     # Mandatory
 
     # Nullable
-    title = Column(String, nullable=False)
+    title = Column(String, nullable=True)
     transcript = Column(Text, nullable=True)
     description = Column(Text, nullable=True)
     summary = Column(Text, nullable=True)

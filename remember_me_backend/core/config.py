@@ -1,4 +1,5 @@
 from typing import List
+
 from pydantic_settings import BaseSettings
 
 
@@ -11,11 +12,9 @@ class Settings(BaseSettings):
     ALLOWED_ORIGINS: List[str] = ["http://localhost:3000"]  # Add your frontend URL
 
     # Database
-    DATABASE_URL: str = "sqlite:///./remember_me.db"
-
-    # JWT
-    JWT_SECRET: str = "your-secret-key"  # Change this!
-    ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 8  # 8 days
+    DATABASE_URL: str = (
+        "postgresql+asyncpg://postgres:yourpassword@localhost:5432/remember_me_backend"
+    )
 
     class Config:
         case_sensitive = True

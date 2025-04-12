@@ -3,9 +3,6 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from remember_me_backend.api import router as api_router
 from remember_me_backend.core.config import settings
-from remember_me_backend.models import DBModel, sync_engine
-
-DBModel.metadata.create_all(bind=sync_engine)
 
 app = FastAPI(title=settings.PROJECT_NAME, version=settings.VERSION)
 
