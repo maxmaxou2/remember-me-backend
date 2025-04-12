@@ -2,7 +2,7 @@ from datetime import datetime
 
 from sqlalchemy import Column, DateTime, Integer
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
-from sqlalchemy.orm import declarative_base
+from sqlalchemy.orm import DeclarativeBase
 
 from remember_me_backend.core import settings
 
@@ -13,15 +13,14 @@ async_session_maker = async_sessionmaker(
     autocommit=False, autoflush=False, bind=async_engine
 )
 
-Base = declarative_base()
 
-
-class DBModel(Base):
+class DBModel(DeclarativeBase):
     __abstract__ = True
 
     id = Column(Integer, primary_key=True, index=True)
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
 
 async def init_db():
     async with async_engine.begin() as conn:

@@ -18,6 +18,7 @@ app = typer.Typer()
 @app.command("init-db")
 def init_db() -> None:
     from remember_me_backend.models.base import init_db
+
     asyncio.run(init_db())
 
 
@@ -26,6 +27,7 @@ def seed_db() -> None:
     from remember_me_backend.models import User, async_session_maker
 
     email = "maxrossignol@hotmail.fr"
+
     async def _wrapper():
         async with async_session_maker() as session:
             query = sa.select(User).filter(User.email == email)

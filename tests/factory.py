@@ -9,12 +9,9 @@ from mixer.backend.sqlalchemy import SKIP_VALUE
 from mixer.backend.sqlalchemy import GenFactory as BaseGenFactory
 from mixer.backend.sqlalchemy import Mixer as BaseMixer
 from mixer.backend.sqlalchemy import TypeMixer as BaseTypeMixer
-from sqlalchemy import Boolean, Integer, String, Text
+from remember_me_backend.models import ChatSession, User
 
 faker = Faker()
-
-# Replace this with your real model import
-from your_project.models import ChatSession, User
 
 
 class GenFactory(BaseGenFactory):  # Extend if needed

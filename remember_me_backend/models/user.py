@@ -18,4 +18,3 @@ class User(DBModel):
 
     # Relationships
     chat_sessions = relationship("ChatSession", back_populates="user")
-

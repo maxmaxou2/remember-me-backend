@@ -1,4 +1,4 @@
-from typing import Annotated, TypeAlias
+from typing import Annotated, AsyncGenerator, TypeAlias
 
 import sqlalchemy as sa
 from fastapi import Depends, Request
@@ -9,12 +9,12 @@ from starlette import status as httpstatus
 from remember_me_backend.models import User, async_session_maker
 
 
-async def get_db_session() -> AsyncSession:
+async def get_db_session() -> AsyncGenerator[AsyncSession, None]:
     db = async_session_maker()
     try:
         yield db
     finally:
-        db.close()
+        await db.close()
 
 
 # TODO: Remove the wizard logic and implement zitadel auth flow
