@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from pprint import pprint
 
-import sqlalchemy as sa
 import typer
 
 try:
@@ -20,7 +19,7 @@ def seed_db() -> None:
 
     session = sync_session_maker()
 
-    email = "admin@example.com"
+    email = "maxrossignol@hotmail.fr"
     existing_user = session.query(User).filter(User.email == email).first()
 
     if not existing_user:
@@ -30,3 +29,7 @@ def seed_db() -> None:
         print(f"Created user with email: {email}")
     else:
         print(f"User with email {email} already exists")
+
+
+if __name__ == "__main__":
+    app()

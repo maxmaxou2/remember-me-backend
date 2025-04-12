@@ -12,7 +12,7 @@ sync_engine = create_engine(
 sync_session_maker = sessionmaker(autocommit=False, autoflush=False, bind=sync_engine)
 
 Base = declarative_base()
-Base.metadata.create_all(bind=sync_engine)
+
 
 
 class DBModel(Base):

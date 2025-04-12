@@ -5,7 +5,7 @@ async def create_session(
     session: ChatSession, title: str, description: str, content: str, user: User
 ) -> ChatSession:
     chat_session = ChatSession(
-        title=title, description=description, content=content, user=user
+        title=title, description=description, transcript=content, user=user
     )
 
     session.add(chat_session)
@@ -14,5 +14,9 @@ async def create_session(
     return chat_session
 
 
-def get_session(session: ChatSession, session_uuid: int):
-    return session.query(ChatSession).filter(ChatSession.uuid == session_uuid).first()
+async def get_session(session: ChatSession, session_id: int, user: User):
+    return (
+        session.query(ChatSession)
+        .filter(ChatSession.id == session_id, ChatSession.user == user)
+        .first()
+    )

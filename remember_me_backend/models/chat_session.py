@@ -8,13 +8,13 @@ class ChatSession(DBModel):
     __tablename__ = "chat_sessions"
 
     # Mandatory
-    title = Column(String, nullable=False)
-    transcript = Column(Text, nullable=False)
 
     # Nullable
+    title = Column(String, nullable=False)
+    transcript = Column(Text, nullable=True)
     description = Column(Text, nullable=True)
     summary = Column(Text, nullable=True)
 
     # Relationships
     user_id = Column(Integer, ForeignKey("users.id"))
-    user = relationship("User", back_populates="sessions")
+    user = relationship("User", back_populates="chat_sessions")

@@ -1,6 +1,7 @@
 from sqlalchemy import Boolean, Column, String
 
 from remember_me_backend.models.base import DBModel
+from sqlalchemy.orm import relationship
 
 
 class User(DBModel):
@@ -14,3 +15,7 @@ class User(DBModel):
 
     # Nullable
     full_name = Column(String, nullable=True)
+
+    # Relationships
+    chat_sessions = relationship("ChatSession", back_populates="user")
+

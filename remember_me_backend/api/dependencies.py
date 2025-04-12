@@ -18,12 +18,12 @@ async def get_db_session() -> Session:
 
 # TODO: Remove the wizard logic and implement zitadel auth flow
 async def get_current_user(
-    request: Request, db_session : Session = Depends(get_db_session)
+    request: Request, db_session: Session = Depends(get_db_session)
 ) -> User:
     # To be removed upon auth implementation
-    request.state = getattr(request, "state", {})
+    state = getattr(request, "state", {})
     base_user = getattr(
-        request.state,
+        state,
         "user",
         type("BaseUser", (), {"email": "maxrossignol@hotmail.fr"})(),
     )
@@ -34,6 +34,7 @@ async def get_current_user(
         )
 
     return user
+
 
 CurrentUserDep: TypeAlias = Annotated[User, Depends(get_current_user)]
 SyncSessionDep: TypeAlias = Annotated[Session, Depends(get_db_session)]
