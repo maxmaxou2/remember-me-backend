@@ -1,6 +1,11 @@
 # remember-me-backend
 Capture your wisdom, share it with your family
 
+# Pre-Requirements
+
+- Python 3.12
+- PostgreSQL
+
 # Setup
 
 1. Clone the repository
@@ -21,7 +26,7 @@ remember-me init-db
 createdb -U postgres remember_me_backend_unittest
 ```
 
-4. Run the server
+# Run the server
 ```bash
 make dev
 ```
