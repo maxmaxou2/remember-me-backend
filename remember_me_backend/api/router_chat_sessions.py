@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from fastapi import APIRouter
 from pydantic import BaseModel
 
@@ -9,6 +11,9 @@ class ChatSessionBase(BaseModel):
     title: str | None = None
     description: str | None = None
 
+    updated_at: datetime
+    created_at: datetime
+
 
 class ChatSessionCreate(ChatSessionBase):
     pass
@@ -16,18 +21,17 @@ class ChatSessionCreate(ChatSessionBase):
 
 class ChatSession(ChatSessionBase):
     id: int
-    # transcript: str | None = None
-    # summary: str | None = None
+    transcript: str | None = None
+    summary: str | None = None
 
     class Config:
         from_attributes = True
-        orm_mode = True
 
 
 router = APIRouter()
 
 
-@router.post("/", response_model=ChatSession)
+@router.post("/create", response_model=ChatSession)
 async def create_chat_session(
     user: CurrentUserDep,
     session: AsyncSessionDep,
@@ -43,12 +47,12 @@ async def create_chat_session(
     return chat_session
 
 
-@router.get("/{session_uuid}", response_model=ChatSession)
+@router.get("/{chat_session_uuid}", response_model=ChatSession)
 async def get_chat_session(
-    chat_session_id: int,
+    chat_session_uuid: int,
     user: CurrentUserDep,
     session: AsyncSessionDep,
 ):
     return await chat_session_service.get_chat_session(
-        session=session, chat_session_id=chat_session_id, user=user
+        session=session, chat_session_id=chat_session_uuid, user=user
     )
