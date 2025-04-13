@@ -22,6 +22,7 @@ UNITTEST_DATABASE_URL = os.getenv(
     "UNITTEST_DATABASE_URL",
     "postgresql+asyncpg://postgres:postgres@localhost:5432/remember_me_backend_unittest",
 )
+ROUTER_PREFIX = os.getenv("ROUTER_PREFIX", "/api/v1")
 
 
 @pytest_asyncio.fixture(scope="function")

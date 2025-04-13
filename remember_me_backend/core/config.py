@@ -6,10 +6,10 @@ from pydantic_settings import BaseSettings
 class Settings(BaseSettings):
     PROJECT_NAME: str = "Remember Me API"
     VERSION: str = "0.1.0"
-    API_V1_STR: str = "/api/v1"
+    ROUTER_PREFIX: str = "/api/v1"
 
     # CORS
-    ALLOWED_ORIGINS: List[str] = ["http://localhost:3000"]  # Add your frontend URL
+    ALLOWED_ORIGINS: List[str] = ["http://localhost:3000"]
 
     # Database
     DATABASE_URL: str = (
