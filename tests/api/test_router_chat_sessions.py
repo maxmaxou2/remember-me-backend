@@ -1,5 +1,3 @@
-import datetime as dt
-
 import pytest
 import time_machine
 from inline_snapshot import snapshot
@@ -22,8 +20,8 @@ class TestRouterChatSessions:
             {
                 "title": None,
                 "description": None,
-                "updated_at": '2024-12-31T23:00:00',
-                "created_at": '2024-12-31T23:00:00',
+                "updated_at": "2024-12-31T23:00:00",
+                "created_at": "2024-12-31T23:00:00",
                 "id": 1,
                 "transcript": None,
                 "summary": None,
@@ -43,8 +41,8 @@ class TestRouterChatSessions:
             {
                 "title": None,
                 "description": None,
-                "updated_at": '2024-12-31T23:00:00',
-                "created_at": '2024-12-31T23:00:00',
+                "updated_at": "2024-12-31T23:00:00",
+                "created_at": "2024-12-31T23:00:00",
                 "id": 1,
                 "transcript": None,
                 "summary": None,
