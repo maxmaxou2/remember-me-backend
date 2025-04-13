@@ -1,5 +1,10 @@
 .DEFAULT_GOAL := all
 
+.PHONY: dev prod test
+
+dev:
+	uvicorn remember_me_backend.app:app --reload --host 0.0.0.0 --port 8000
+
 .PHONY: install
 install:
 	@which uv > /dev/null 2>&1 || (echo "Installing uv..." && curl -LsSf https://astral.sh/uv/0.5.29/install.sh | sh)

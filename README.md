@@ -14,8 +14,14 @@ cd remember-me-backend
 make install
 ```
 
-3. Create the databases
+3. Create dev and testing databases
 ```bash
 createdb -U postgres remember_me_backend
+remember-me init-db
 createdb -U postgres remember_me_backend_unittest
+```
+
+4. Run the server
+```bash
+make dev
 ```
